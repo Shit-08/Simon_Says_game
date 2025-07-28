@@ -51,7 +51,11 @@ function checkAnswer(idx) {
     }
     else{
         console.log("Wrong!");
-        document.querySelector("h2").textContent = "Game Over, Press Any Key to Restart";
+        document.querySelector("h2").innerHTML = `Game Over, Your score is <b> ${level} </b> <br> Press Any Key to Restart`;
+        document.querySelector("body").style.backgroundColor="red";
+        setTimeout(function(){
+            document.querySelector("body").style.backgroundColor="white";
+        },400);
         reset();
     }
 }
@@ -59,5 +63,6 @@ function checkAnswer(idx) {
 function reset(){
     started=false;
     gameSeq=[];
-    
+    userSeq=[];
+    level=0;
 }
