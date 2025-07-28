@@ -4,6 +4,7 @@ let userSeq=[];
 let btns=["red", "blue", "green", "yellow"];
 let started=false;
 let level=0;
+let highestScore=0;
 
 document.addEventListener("keydown", function() {
     if(!started) {
@@ -51,7 +52,10 @@ function checkAnswer(idx) {
     }
     else{
         console.log("Wrong!");
-        document.querySelector("h2").innerHTML = `Game Over, Your score is <b> ${level} </b> <br> Press Any Key to Restart`;
+        if(highestScore < level) {
+            highestScore = level;
+        } 
+        document.querySelector("h2").innerHTML = `Game Over, Your score is <b> ${level} </b> <br> Press Any Key to Restart.<br> Highest Score till now is <b> ${highestScore} </b>`;
         document.querySelector("body").style.backgroundColor="red";
         setTimeout(function(){
             document.querySelector("body").style.backgroundColor="white";
